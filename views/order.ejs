@@ -1,0 +1,136 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+<!-- shopping-cart31:32-->
+<head>
+        
+    
+    <%- include("./partials/head", { isAuthenticated: isAuthenticated }) %>
+
+    </head>
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+
+            <%- include("./partials/header", { isAuthenticated: isAuthenticated }) %>
+            
+            <!-- Header Area End Here -->
+            <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li class="active">Orders</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!--Shopping Cart Area Strat-->
+            <div class="Shopping-cart-area pt-60 pb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- <form action="#"> -->
+                                <div class="table-content table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="li-product-name">Order ID's</th>
+                                                <th class="cart-product-subtotal">Total payment</th>
+                                                <th class="li-product-price">Payment status</th>
+                                                <th class="li-product-name">Check details</th>
+                                                <th class="li-product-name">Check Payment Status</th>
+                                            </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                            <% for (let item of order) { %>
+                                            <tr>                                          
+                                                
+                                                <td class="li-product-name"><a class="text-dark" href="/getOrder/<%= item.id %>"><%= item.id %></a></td>
+
+                                                <td class="product-subtotal"><span class="amount"><%= item.grandTotal %></span></td>  
+                                                                                                  
+                                                <td class="product-subtotal"><span class="amount"><%= item.paymentStatus %></span></td>  
+
+                                               
+                                                <td class="product-name"><span class="btn btn-dark"> <a href="/getOrder/<%= item.id %>">Check details</a></span></td>  
+                                                <td class="product-name"><span class="btn btn-secondary"> <a href="/getOrderPaymentStatus/<%= item.id %>">Requery</a></span></td>                                            
+                                            </tr>
+                                            <% } %>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                              
+                            <!-- </form> -->
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+           
+            <!--Shopping Cart Area End-->
+            <!-- Begin Footer Area -->
+            
+            <%-include("./partials/footer") %>
+
+            <!-- Footer Area End Here -->
+        </div>
+        <!-- Body Wrapper End Here -->
+        <!-- jQuery-V1.12.4 -->
+        <script src="/js/vendor/jquery-1.12.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="/js/vendor/popper.min.js"></script>
+        <!-- Bootstrap V4.1.3 Fremwork js -->
+        <script src="/js/bootstrap.min.js"></script>
+        <!-- Ajax Mail js -->
+        <script src="/js/ajax-mail.js"></script>
+        <!-- Meanmenu js -->
+        <script src="/js/jquery.meanmenu.min.js"></script>
+        <!-- Wow.min js -->
+        <script src="/js/wow.min.js"></script>
+        <!-- Slick Carousel js -->
+        <script src="/js/slick.min.js"></script>
+        <!-- Owl Carousel-2 js -->
+        <script src="/js/owl.carousel.min.js"></script>
+        <!-- Magnific popup js -->
+        <script src="/js/jquery.magnific-popup.min.js"></script>
+        <!-- Isotope js -->
+        <script src="/js/isotope.pkgd.min.js"></script>
+        <!-- Imagesloaded js -->
+        <script src="/js/imagesloaded.pkgd.min.js"></script>
+        <!-- Mixitup js -->
+        <script src="/js/jquery.mixitup.min.js"></script>
+        <!-- Countdown -->
+        <script src="/js/jquery.countdown.min.js"></script>
+        <!-- Counterup -->
+        <script src="/js/jquery.counterup.min.js"></script>
+        <!-- Waypoints -->
+        <script src="/js/waypoints.min.js"></script>
+        <!-- Barrating -->
+        <script src="/js/jquery.barrating.min.js"></script>
+        <!-- Jquery-ui -->
+        <script src="/js/jquery-ui.min.js"></script>
+        <!-- Venobox -->
+        <script src="/js/venobox.min.js"></script>
+        <!-- Nice Select js -->
+        <script src="/js/jquery.nice-select.min.js"></script>
+        <!-- ScrollUp js -->
+        <script src="/js/scrollUp.min.js"></script>
+         <!-- Axios CDN JS plugin -->
+         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+         <!-- Index/API functionality -->
+         <script src="/js/index/order.js"></script>
+        <!-- Main/Activator js -->
+        <script src="/js/main.js"></script>
+    </body>
+
+<!-- shopping-cart31:32-->
+</html>

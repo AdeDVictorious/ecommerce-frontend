@@ -1,0 +1,192 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    
+<!-- shopping-cart31:32-->
+<head>
+        
+    
+    <%- include("./partials/head", { isAuthenticated: isAuthenticated }) %>
+
+    </head>
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+
+            <%- include("./partials/header", { isAuthenticated: isAuthenticated }) %>
+            
+            <!-- Header Area End Here -->
+            <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li class="active">Shopping Cart</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!--Shopping Cart Area Strat-->
+            <div class="Shopping-cart-area pt-60 pb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="#">
+                                <div class="table-content table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="li-product-remove">remove</th>
+                                                <th class="li-product-thumbnail">images</th>
+                                                <th class="cart-product-name">Product</th>
+                                                <th class="li-product-price">Unit Price (₦)</th>
+                                                <th class="li-product-quantity">Quantity</th>
+                                                <th class="li-product-subtotal">Total (₦)</th>
+                                            </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                            <% for (let item of cart) { %>
+                                            <tr class="cart-row">
+                                                <td class="li-product-remove"><a href="/delete-product/<%= item.id%>"><i class="fa fa-times"></i></a></td>
+                                                <td class="li-product-thumbnail" id="<%= item.image %>"><a href="/product-preview/<%= item.Product_TableId %>"><img src="<%= item.image %>" alt="<%= item.name%>" style="max-width: 200px; height: 100px" ></a></td>
+                                                <td class="li-product-name" id="<%= item.name %>"><a href="/product-preview/<%= item.Product_TableId%>"><%= item.name %></a></td>
+                                                
+                                                <td class="li-product-price" id="<%= item.price %>"><span class="amount"><%= item.price %></span></td>
+                                                
+                                                <td class="quantity" id="<%= item.Product_TableId %>">
+                                                    <div class="cart-plus-minus">
+                                                        <input class="cart-plus-minus-box" value="<%= item.quantity %>" type="text" id="<%= item.id %>">
+                                                        <div class="dec qtybutton" id="<%= item.id %>"><i class="fa fa-angle-down down" id="decQty"></i></div>
+                                                        <div class="inc qtybutton" id="<%= item.id %>"><i class="fa fa-angle-up up" id="incQty"></i></div>
+                                                    </div>
+                                                    <div class="itemMsg" id="<%= item.id %>" style="color: #f71111;"><h5></h5></div>
+                                                </td>
+
+                                                <td class="product-subtotal"><span class="amount"><%= item.actual_total %></span></td>
+                                            </tr>
+                                            <% } %>
+                                           
+                                        </tbody>
+                                    </table>
+                                </div> 
+                                <div class="col-12">
+                                    <span><br><br></span>
+                                </div>   
+                                                                                   
+                                <div class="row">
+                                    <div class="col-lg-6 col-12">
+                                        <form action="#">
+                                            <div class="checkbox-form">
+                                                <h3>Billing Details</h3>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="country-select clearfix">
+                                                            <label>State <span class="required">*</span></label>
+                                                            <select class="nice-select wide" id="mySelect">
+                                                                <option data-display="Select">Select</option>
+                                                               <%  for(var count = 0; count < statelist.length; count++) { %>
+                                                                <option value="<%= statelist[count].state %>" ><%= statelist[count].state %></option>
+                                                                <% } %>
+                                                            </select>
+                                                        </div>
+                                                        <div class="country-select clearfix">
+                                                            <label>LGA <span class="required">*</span></label>                                                            
+                                                            <select class="nice-select wide" id="selectedLGA"></select>
+                                                        </div>
+                                                        <div class="optionErr" style="color: #f71111;"><h6></h6></div>
+                                                        <div class="checkout-form-list">
+                                                            <label>Delivery Address <span class="required">*</span></label>
+                                                            <input placeholder="Street address" type="text" id="deliveryAddress">
+                                                            <div class="addressError" style="color: #f71111;"><h6></h6></div>
+                                                        </div>   
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                    <div class="col-md-5 ml-auto">
+                                        <div class="cart-page-total" id="cart-page">
+                                            <h2>Cart totals</h2>
+                                            <ul>
+                                                <li class="columnSum" id="<%= columnSum %>">Sub total<span class="total_Sum">₦ <%= columnSum %></span></li>
+                                                <li>Total<span class="totalSum">₦ <%= columnSum %></span></li>
+                                            </ul>
+                                            <div class="cartMsg" style="color: #f71111;"><h5></h5></div>
+                                            <!-- <button id="checkout">Proceed to checkout</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                          
+                            </form>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+           
+            <!--Shopping Cart Area End-->
+            <!-- Begin Footer Area -->
+            
+            <%-include("./partials/footer") %>
+
+            <!-- Footer Area End Here -->
+        </div>
+        <!-- Body Wrapper End Here -->
+        <!-- jQuery-V1.12.4 -->
+        <script src="/js/vendor/jquery-1.12.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="/js/vendor/popper.min.js"></script>
+        <!-- Bootstrap V4.1.3 Fremwork js -->
+        <script src="/js/bootstrap.min.js"></script>
+        <!-- Ajax Mail js -->
+        <script src="/js/ajax-mail.js"></script>
+        <!-- Meanmenu js -->
+        <script src="/js/jquery.meanmenu.min.js"></script>
+        <!-- Wow.min js -->
+        <script src="/js/wow.min.js"></script>
+        <!-- Slick Carousel js -->
+        <script src="/js/slick.min.js"></script>
+        <!-- Owl Carousel-2 js -->
+        <script src="/js/owl.carousel.min.js"></script>
+        <!-- Magnific popup js -->
+        <script src="/js/jquery.magnific-popup.min.js"></script>
+        <!-- Isotope js -->
+        <script src="/js/isotope.pkgd.min.js"></script>
+        <!-- Imagesloaded js -->
+        <script src="/js/imagesloaded.pkgd.min.js"></script>
+        <!-- Mixitup js -->
+        <script src="/js/jquery.mixitup.min.js"></script>
+        <!-- Countdown -->
+        <script src="/js/jquery.countdown.min.js"></script>
+        <!-- Counterup -->
+        <script src="/js/jquery.counterup.min.js"></script>
+        <!-- Waypoints -->
+        <script src="/js/waypoints.min.js"></script>
+        <!-- Barrating -->
+        <script src="/js/jquery.barrating.min.js"></script>
+        <!-- Jquery-ui -->
+        <script src="/js/jquery-ui.min.js"></script>
+        <!-- Venobox -->
+        <script src="/js/venobox.min.js"></script>
+        <!-- Nice Select js -->
+        <script src="/js/jquery.nice-select.min.js"></script>
+        <!-- ScrollUp js -->
+        <script src="/js/scrollUp.min.js"></script>
+         <!-- Axios CDN JS plugin -->
+         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+         <!-- Index/API functionality -->
+         <script src="/js/index/shoppingCart.js"></script>
+        <!-- Main/Activator js -->
+        <script src="/js/main.js"></script>
+       
+    </body>
+
+<!-- shopping-cart31:32-->
+</html>

@@ -1,0 +1,147 @@
+<header class="li-header-4">
+ 
+    <!-- Begin Header Middle Area -->
+    <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Header Logo Area -->
+                <div class="col-lg-3">
+                    <div class="logo pb-sm-30 pb-xs-30">
+                        <a href="/">
+                            <!-- <img src="" alt="Scubed logo"> --> <h3 style="color: white;">Scubed juice</h3>
+                        </a>
+                    </div>
+                </div>
+                <!-- Header Logo Area End Here -->
+                <!-- Begin Header Middle Right Area -->
+                <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+                    <!-- Begin Header Middle Searchbox Area -->
+                    <form action="#" class="hm-searchbox">
+                        <input type="text" id="searchInput" placeholder="Enter your search ...e.g. pineapple_orange">
+                        <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                    <!-- Header Middle Searchbox Area End Here -->
+                    <!-- Begin Header Middle Right Area -->
+                    <div class="header-middle-right">
+                        <ul class="hm-menu">
+                            <!-- Begin Header Middle Wishlist Area -->
+                           
+                            <li class="hm-wishlist">
+                                <a href="/shopping-cart">
+                                    <span class="cart-item-count wishlist-item-count"><%= cartQty %></span>
+                                    <i class="fa-solid fa-cart-shopping fa-sm"></i>
+                                </a>
+                            </li>
+                          
+                            <!-- Header Middle Wishlist Area End Here -->
+                            <!-- Begin Header Mini Cart Area -->
+                            <li class="hm-minicart">
+                                <% if(isAuthenticated) { %>
+                                <div class="hm-minicart-trigger">
+                                    <span class="item-icon"></span>
+                                    <span class="item-text">Account</span>
+                                </div>
+                                <% } else { %>
+                                    <div class="hm-minicart-trigger">
+                                        <span class="item-icon"></span>
+                                        <span class="item-text" id="account_display">Account</span>
+                                    </div>
+                                <% } %>
+                                <span></span>
+                                <% if(isAuthenticated) { %>
+                                <div class="minicart">
+                                    <div class="minicart-button">
+                                        <a href="/my-profile" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                            <span>My Account</span>
+                                        </a>
+                                        <a href="/order" class="li-button li-button-fullwidth li-button-sm">
+                                            <span>Orders</span>
+                                        </a>
+                                        <a href="/wishlist" class="li-button li-button-fullwidth li-button-sm">
+                                            <span>Wishlist</span>
+                                        </a>
+                                        <a href="/logout" class="li-button li-button-fullwidth li-button-sm">
+                                            <span>logout</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <% } else { %>
+                                <div class="minicart">
+                                    <div class="minicart-button">
+                                        <a href="/login" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                            <span>Sign in</span>
+                                        </a>
+                                        <a href="/my-profile" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                            <span>My Account</span>
+                                        </a>                                                                            
+                                        <a href="/wishlist" class="li-button li-button-fullwidth li-button-sm">
+                                            <span>Wishlist</span>
+                                        </a>                                       
+                                    </div>
+                                </div>
+                                <% } %>
+
+                            </li>
+                            <!-- Header Mini Cart Area End Here -->
+                        </ul>
+                    </div>
+                    <!-- Header Middle Right Area End Here -->
+                </div>
+                <!-- Header Middle Right Area End Here -->
+            </div>
+        </div>
+    </div>
+    <!-- Header Middle Area End Here -->
+    <!-- Begin Header Bottom Area -->
+
+    <!--  Search for Template Engine -->
+    
+    <div class="header-bottom header-sticky stick d-none d-lg-block d-xl-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                   <!-- Begin Header Bottom Menu Area -->
+                   <div class="hb-menu" >
+                       <nav>
+                            <ul>
+
+                                <li class="active"><a href="/">Home</a></li>
+
+                                <li><a href="/shop">Product</a></li>
+                                                                            
+                                <li><a href="/shopping-cart">Shopping Cart</a></li>
+                                
+                                <li><a href="/gallery">Gallery</a></li>
+
+                                <li><a href="/services">Services</a></li>
+
+                                <li><a href="/contact">Contact</a></li>
+
+                                <li><a href="/about-us">About Us</a></li>                                
+
+                            </ul>
+                       </nav>
+                   </div>
+                   <!-- Header Bottom Menu Area End Here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Bottom Area End Here -->
+
+    
+    <!-- Begin Mobile Menu Area -->
+    <div class="mobile-menu-area mobile-menu-area-4 d-lg-none d-xl-none col-12">
+        <div class="container"> 
+            <div class="row">
+                <div class="mobile-menu">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu Area End Here -->
+</header>
+<!-- Axios CDN JS plugin -->
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- Index/API functionality -->
+<script src="/js/index/search.js"></script>
